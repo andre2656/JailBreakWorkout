@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Button, Text, View } from 'react-native';
+import Test from '../screens/TestScreen';
 // import Main from '../screens/MainJobScreen';
 // import Measure from '../screens/MeasureScreen'
 // import Install from '../screens/InstallScreen';
@@ -8,7 +9,11 @@ import { Button, Text, View } from 'react-native';
 
 export const createSimpleTabs = (options = {}) => {
     return createBottomTabNavigator(
-        // {
+        {
+            Main: {
+                screen: Test,
+                params: { title: 'Test', icon: 'building' },
+            },
         //     Main: {
         //         screen: Main,
         //         params: { title: 'Building', icon: 'building' },
@@ -26,7 +31,7 @@ export const createSimpleTabs = (options = {}) => {
         //         params: { title: 'Issue', icon: 'exclamation-triangle' },
         //     },
 
-        // },
+        },
         {
             backBehavior: 'history',
             ...options,

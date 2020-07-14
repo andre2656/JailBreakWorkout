@@ -3,6 +3,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import TestScreen from '../screens/TestScreen';
 // import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 // import MainMenuIcon from '../components/MainMenuIcon';
 // import HomeScreen from '../screens/HomeScreen';
@@ -25,6 +26,19 @@ import { Button } from 'react-native';
 
 //     )
 // };
+const TestStack = createStackNavigator({
+    Test: TestScreen,
+});
+TestStack.navigationOptions = {
+    tabBarLabel: 'Home',
+    tabBarIcon: ({ focused }) => (
+        <MainMenuIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'home' : 'home'}
+        />
+
+    )
+};
 
 // const JobSearchStack = createStackNavigator({
 //     JobSearch: JobSearchScreen,
@@ -93,6 +107,7 @@ import { Button } from 'react-native';
 
 
 export default createBottomTabNavigator({
+      Test: TestStack,
     // Home: HomeStack,
     // JobSearch: JobSearchStack,
     // Dashboard: DashboardStack,

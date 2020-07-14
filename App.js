@@ -10,7 +10,7 @@ import {
   Assets as StackAssets,
   createStackNavigator,
 } from 'react-navigation-stack';
-// import { createAppContainer } from '@react-navigation/native';
+import { createAppContainer } from '@react-navigation/native';
 import {
   StatusBar,
   Platform,
@@ -136,7 +136,7 @@ export class Home extends React.Component {
   render() {
     return (
       <View style={{ backgroundColor: 'white', height: '100%' }} >
-        <Text>Hello World</Text>
+        <Text>Hello World  fu</Text>
       </View>
 
     );
@@ -165,6 +165,6 @@ const Root = createStackNavigator(
   }
 );
 
-// const App = createAppContainer(Root);
+const App = createAppContainer(Root);
 export default App;
 registerRootComponent(App);
