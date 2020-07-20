@@ -149,7 +149,7 @@ export class Home extends React.Component {
               type={'password'}
             />
           </View>
-          <View style={{ flexDirection: 'row', marginVertical: '5%' }}>
+          <View style={{ flexDirection: 'row', marginVertical: '5%', marginHorizontal: '1%' }}>
             <CheckBox
               style={{ paddingLeft: '35%', width: '100%', height: 30, paddingRight: '5%' }}
               onClick={() => {

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ProInstallApp",
-    "slug": "proinstallapp",
+    "name": "Jail Break Workout",
+    "slug": "jailbreakworkout",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -26,6 +26,6 @@
       "supportsTablet": true
     },
     "description": "",
-    "githubUrl": "https://github.com/andre2656/ProInstallApp"
+    "githubUrl": "https://github.com/andre2656/JailBreakWorkout"
   }
 }
