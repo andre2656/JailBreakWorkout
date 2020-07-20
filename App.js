@@ -57,27 +57,10 @@ export class Home extends React.Component {
     displayMenu: 0,
     isChecked: true,
   };
-  menuClicked = () => {
-    if (this.state.menuOpen) {
-      this.setState({
-        menuOpen: false,
-        displayMenu: 0,
-      })
-    } else if (!this.state.menuOpen) {
-      this.setState({
-        menuOpen: true,
-        displayMenu: 65,
-      })
-    }
-  };
-  submitPressed = () => {
-
-    //add verification here
-    this.props.navigation.navigate('Main')
-  
-  }
-
-
+ 
+  static navigationOptions = () => ({
+   headerShown: false,
+  });
   componentDidMount() {
 
     return fetch('http://192.168.2.103/')
@@ -98,21 +81,24 @@ export class Home extends React.Component {
 
   };
 
+  submitPressed = () => {
 
+    //add verification here
+    this.props.navigation.navigate('Main')
 
-
-  constructor(props) {
-
-    super(props)
-
-    this.state = {
-
-      TextInputName: '',
-      TextInputEmail: '',
-      TextInputPhoneNumber: ''
-
+  }
+  menuClicked = () => {
+    if (this.state.menuOpen) {
+      this.setState({
+        menuOpen: false,
+        displayMenu: 0,
+      })
+    } else if (!this.state.menuOpen) {
+      this.setState({
+        menuOpen: true,
+        displayMenu: 65,
+      })
     }
-
   };
 
   _renderItem = ({ item }) => (
@@ -127,8 +113,7 @@ export class Home extends React.Component {
   render() {
     return (
       <View style={{ backgroundColor: 'white', height: '100%' }} >
-      
-        <View style={{ marginTop: '45%' }}>
+        <View style={{ marginTop: '25%' }}>
           <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, marginTop: '5%' }}>
             <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10 }}
               keyboardType='default'
@@ -139,7 +124,7 @@ export class Home extends React.Component {
               type={'username'} />
           </View>
           <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: '6%', marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, }}>
-            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10 }}
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10, paddingRight: 25}}
               keyboardType='default'
               onChange={this.PasswordAuth}
               placeholder={'Password'}
@@ -149,7 +134,7 @@ export class Home extends React.Component {
               type={'password'}
             />
           </View>
-          <View style={{ flexDirection: 'row', marginVertical: '5%', marginHorizontal: '1%' }}>
+          <View style={{ flexDirection: 'row', marginVertical: '5%', width: '100%' }}>
             <CheckBox
               style={{ paddingLeft: '35%', width: '100%', height: 30, paddingRight: '5%' }}
               onClick={() => {
@@ -158,8 +143,8 @@ export class Home extends React.Component {
                 })
               }}
               isChecked={!this.state.isChecked}
-              leftText={"Show Password?"}
-              leftTextStyle={{ fontSize: 23 }}
+              leftText={"Show Password"}
+              leftTextStyle={{ fontSize: 23, paddingRight: 15 }}
               checkedImage={<Image source={require('./assets/images/active.png')} style={{ height: 30, width: 60 }} />}
               unCheckedImage={<Image source={require('./assets/images/disable.png')} style={{ height: 30, width: 60 }} />}
             />
