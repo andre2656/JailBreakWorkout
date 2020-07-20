@@ -31,6 +31,7 @@ import CheckBox from 'react-native-check-box';
 import { List, Divider } from 'react-native-paper';
 import { Button } from 'react-native-elements';
 import RouteNav from './navigation/RouteNavigator';
+import Header from './components/Header'
 // gesturesEnabled
 
 
@@ -112,10 +113,16 @@ export class Home extends React.Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: 'white', height: '100%' }} >
+      <View style={{ backgroundColor: '#f6f5f3', height: '100%' }} >
+        <Header/>
+        <View>
+          <Text>
+            Welcome, please sign into your account!
+          </Text>
+        </View>
         <View style={{ marginTop: '25%' }}>
-          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, marginTop: '5%' }}>
-            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10 }}
+          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2,}}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, paddingLeft: 10, }}
               keyboardType='default'
               onChange={this.UsernameAuth}
               placeholder={'Username'}
@@ -123,8 +130,8 @@ export class Home extends React.Component {
               returnKeyType={'next'}
               type={'username'} />
           </View>
-          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: '6%', marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, }}>
-            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10, paddingRight: 25}}
+          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: '6%', marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, marginTop: '10%' }}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, paddingLeft: 10, paddingRight: 25}}
               keyboardType='default'
               onChange={this.PasswordAuth}
               placeholder={'Password'}
@@ -134,7 +141,7 @@ export class Home extends React.Component {
               type={'password'}
             />
           </View>
-          <View style={{ flexDirection: 'row', marginVertical: '5%', width: '100%' }}>
+          <View style={{ flexDirection: 'row', marginTop: '5%', width: '100%' }}>
             <CheckBox
               style={{ paddingLeft: '35%', width: '100%', height: 30, paddingRight: '5%' }}
               onClick={() => {
