@@ -29,8 +29,8 @@ import {
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import { List, Divider } from 'react-native-paper';
-import { Button } from 'react-native-elements';
 import RouteNav from './navigation/RouteNavigator';
+import { Right } from 'native-base';
 // gesturesEnabled
 
 
@@ -139,17 +139,18 @@ export class Home extends React.Component {
               type={'password'}
             />
           </View>
-          <View style={{ flexDirection: 'row', marginTop: '5%', width: '100%' }}>
+          <View style={{ flexDirection: 'row', marginTop: '5%', width: '100%', }}>
+           
             <CheckBox
-              style={{ paddingLeft: '35%', width: '100%', height: 30, paddingRight: '5%' }}
+              style={{ paddingLeft: '40%', width: '100%', height: 30, paddingRight: '5%',  }}
               onClick={() => {
                 this.setState({
                   isChecked: !this.state.isChecked,
                 })
               }}
+              leftText='Show Password?'
               isChecked={!this.state.isChecked}
-              leftText={"Show Password"}
-              leftTextStyle={{ fontSize: 23, paddingRight: 15 }}
+              leftTextStyle={{ fontSize: 18, color: '#EEEEEE', paddingTop: 5 }}
               checkedImage={<Image source={require('./assets/images/active.png')} style={{ height: 30, width: 60 }} />}
               unCheckedImage={<Image source={require('./assets/images/disable.png')} style={{ height: 30, width: 60 }} />}
             />
@@ -157,9 +158,9 @@ export class Home extends React.Component {
           </View>
           <View style={{ width: '90%', flexDirection: 'row', marginTop: '15%', marginHorizontal: '5%', }}>
             <TouchableOpacity
-              style={{ marginTop: 25, height: 65, backgroundColor: '#F5F5F5', width: '30%', marginHorizontal: '35%', paddingVertical: 0, borderColor: 'transparent', borderBottomColor: '#282828', borderTopColor: '#282828', borderWidth: 2, textAlign: 'center' }}
+              style={{ marginTop: 25, height: 50, backgroundColor: '#ff6700', width: '100%', paddingVertical: 0, borderColor: '#333333', borderRadius: 5, borderWidth: 2, textAlign: 'center' }}
               onPress={() => this.props.navigation.navigate('Main')} >
-              <Text style={{ fontSize: 32, color: 'black', fontWeight: '600', marginTop: '8%', textAlign: "center"  }}> Login </Text>
+              <Text style={{ fontSize: 20, color: 'black', fontWeight: '500', marginTop: 10, textAlign: "center", width: '100%',  }}> Log in </Text>
             </TouchableOpacity>
           </View>
         </View>
