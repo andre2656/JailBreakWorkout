@@ -1,1 +1,1 @@
-# AppBoilerplate
+# ReactNative-Boilerplate

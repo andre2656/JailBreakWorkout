@@ -2,10 +2,11 @@ import React from 'react';
 import { AppLoading, registerRootComponent } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import { Asset } from 'expo-asset';
-import { Icon } from '@expo/vector-icons';
-import MainTabs, { createSimpleTabs } from './navigation/MainTabs';
-// import HomeScreen from './screens/HomeScreen';
-// import DashboardScreen from './screens/DashboardScreen';
+import Font from 'expo-font'
+import { Icon } from '@expo/vector-icons'
+import RouteNavigation from './navigation/MainTabNavigator';
+import SimpleStack from './navigation/MainTabNavigator';
+import MainJobTabs, { createSimpleTabs } from './navigation/MainJobTabs';
 import {
   Assets as StackAssets,
   createStackNavigator,
@@ -16,7 +17,7 @@ import {
   Platform,
   View,
   StyleSheet,
-  FlatList,
+  FlatList, 
   I18nManager,
   Text,
   Image,
@@ -24,16 +25,19 @@ import {
   TouchableOpacity,
   TextInput,
   AppRegistry,
-  Alert, 
-  List
+  Alert
 } from 'react-native';
-// import { List, Divider } from 'react-native-paper';
+import CheckBox from 'react-native-check-box';
+import { List, Divider } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import RouteNav from './navigation/RouteNavigator';
+// gesturesEnabled
 
 
 const data = [
-  { component: MainTabs, title: 'Tabs', routeName: 'Tabs' },
+  { component: MainJobTabs, title: 'Job', routeName: 'JobTabs' },
   { component: RouteNav, title: 'MainMenu', routeName: 'Main' },
+ 
 ];
 ['initialRoute', 'none', 'order', 'history'].forEach(backBehavior => {
   data.push({
@@ -70,22 +74,8 @@ export class Home extends React.Component {
 
     //add verification here
     this.props.navigation.navigate('Main')
-
+  
   }
-  static navigationOptions = ({ navigation }) => ({
-    tabBarLabel: navigation.getParam('title'),
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name={navigation.getParam('icon')}
-        type='font-awesome'
-        iconStyle={{ height: 100, width: '100%', marginBottom: -50, backgroundColor: 'black', paddingLeft: '44%', paddingRight: '44%', paddingTop: 10, paddingBottom: '50%', color: 'white' }}
-        color={tintColor}
-      />
-    ),
-  });
-  static navigationOptions = {
-    header: null,
-  };
 
 
   componentDidMount() {
@@ -103,10 +93,13 @@ export class Home extends React.Component {
         });
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
 
-    }
+  };
+
+
+
 
   constructor(props) {
 
@@ -120,9 +113,7 @@ export class Home extends React.Component {
 
     }
 
-  }
-
-
+  };
 
   _renderItem = ({ item }) => (
     <List.Item
@@ -136,12 +127,59 @@ export class Home extends React.Component {
   render() {
     return (
       <View style={{ backgroundColor: 'white', height: '100%' }} >
-        <Text>Hello World  fu</Text>
-      </View>
+      
+        <View style={{ marginTop: '45%' }}>
+          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, marginTop: '5%' }}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10 }}
+              keyboardType='default'
+              onChange={this.UsernameAuth}
+              placeholder={'Username'}
+              placeholderTextColor={'black'}
+              returnKeyType={'next'}
+              type={'username'} />
+          </View>
+          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: '6%', marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, }}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, padding: 10 }}
+              keyboardType='default'
+              onChange={this.PasswordAuth}
+              placeholder={'Password'}
+              placeholderTextColor={'black'}
+              secureTextEntry={this.state.isChecked}
+              returnKeyType={'done'}
+              type={'password'}
+            />
+          </View>
+          <View style={{ flexDirection: 'row', marginVertical: '5%' }}>
+            <CheckBox
+              style={{ paddingLeft: '35%', width: '100%', height: 30, paddingRight: '5%' }}
+              onClick={() => {
+                this.setState({
+                  isChecked: !this.state.isChecked,
+                })
+              }}
+              isChecked={!this.state.isChecked}
+              leftText={"Show Password?"}
+              leftTextStyle={{ fontSize: 23 }}
+              checkedImage={<Image source={require('./assets/images/active.png')} style={{ height: 30, width: 60 }} />}
+              unCheckedImage={<Image source={require('./assets/images/disable.png')} style={{ height: 30, width: 60 }} />}
+            />
 
+          </View>
+          <View style={{ width: '90%', flexDirection: 'row', marginTop: '15%', marginHorizontal: '5%', }}>
+            <TouchableOpacity
+              style={{ marginTop: 25, height: 65, backgroundColor: '#F5F5F5', width: '30%', marginHorizontal: '35%', paddingVertical: 0, borderColor: 'transparent', borderBottomColor: '#282828', borderTopColor: '#282828', borderWidth: 2, textAlign: 'center' }}
+              onPress={() => this.props.navigation.navigate('Main')} >
+              <Text style={{ fontSize: 32, color: 'black', fontWeight: '600', marginTop: '8%', textAlign: "center"  }}> Login </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+      
     );
-  };
-};
+  }
+}
+
+
 const Root = createStackNavigator(
   {
     Home: createStackNavigator({ Home }),
@@ -159,9 +197,6 @@ const Root = createStackNavigator(
   {
     mode: 'modal',
     headerMode: 'none',
-    defaultNavigationOptions: {
-      gesturesEnabled: false,
-    },
   }
 );
 
