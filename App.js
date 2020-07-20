@@ -31,7 +31,6 @@ import CheckBox from 'react-native-check-box';
 import { List, Divider } from 'react-native-paper';
 import { Button } from 'react-native-elements';
 import RouteNav from './navigation/RouteNavigator';
-import Header from './components/Header'
 // gesturesEnabled
 
 
@@ -113,29 +112,28 @@ export class Home extends React.Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: '#f6f5f3', height: '100%' }} >
-        <Header/>
-        <View>
-          <Text>
-            Welcome, please sign into your account!
-          </Text>
-        </View>
-        <View style={{ marginTop: '25%' }}>
-          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2,}}>
-            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, paddingLeft: 10, }}
+      <View style={{ backgroundColor: 'black', height: '100%' }} >
+        <View style={{ marginTop: '40%' }}>
+          <View style={{width: '100%',marginVertical: '10%' }}> 
+            <Text style={{fontSize: 30, textAlign: 'center', color: 'white'}}>
+              Jail Break Workout
+            </Text>
+          </View>
+          <View style={{ width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: '#333333', backgroundColor: '#8C8C8C', borderRadius: 5, borderWidth: 2, }}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 18, padding: 10, color: '#EEEEEE' }}
               keyboardType='default'
               onChange={this.UsernameAuth}
               placeholder={'Username'}
-              placeholderTextColor={'black'}
+              placeholderTextColor={'#CCCCCC'}
               returnKeyType={'next'}
               type={'username'} />
           </View>
-          <View style={{ borderColor: 'transparent', width: '90%', flexDirection: 'row', marginTop: '6%', marginHorizontal: '5%', borderColor: 'transparent', borderBottomColor: 'black', borderWidth: 2, marginTop: '10%' }}>
-            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 23, paddingLeft: 10, paddingRight: 25}}
+          <View style={{ width: '90%', flexDirection: 'row', marginTop: 20, marginHorizontal: '5%', borderColor: '#333333', backgroundColor: '#8C8C8C', borderRadius: 5, borderWidth: 2, }}>
+            <TextInput style={{ maxHeight: 150, maxWidth: 350, width: '100%', fontSize: 18, padding: 10, color: '#EEEEEE'}}
               keyboardType='default'
               onChange={this.PasswordAuth}
               placeholder={'Password'}
-              placeholderTextColor={'black'}
+              placeholderTextColor={'#CCCCCC'}
               secureTextEntry={this.state.isChecked}
               returnKeyType={'done'}
               type={'password'}
