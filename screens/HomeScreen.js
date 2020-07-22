@@ -57,8 +57,13 @@ export default class HomeScreen extends React.Component {
                  
                   //Data acuired from the flatlist will be from the database with the  get latest job call
                   data={[
-                    { key: "List of Items 1",},
-                    { key: 'List of Items 2',},
+                    { key: "Sunday",},
+                    { key: 'Monday',},
+                    { key: "Tuesday", },
+                    { key: 'Wednesday', },
+                    { key: "Thursday", },
+                    { key: 'Friday', },
+                    { key: "Saturday", },
                   ]}
 
                   renderItem={({ item }) =>
